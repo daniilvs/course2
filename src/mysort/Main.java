@@ -8,14 +8,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
-    private final Map<Integer, Integer> NUMBER_OF_ITERS = new HashMap<Integer, Integer>() {{
-        put(100, 1000);
-        put(1000, 100);
-        put(10000, 100);
-        put(100000, 100);
-        put(1000000, 10);
-    }};
+    private final int[] number_of_elements = { 100, 1000, 10000, 100000, 1000000};
+    private final int[] number_of_iterartions = { 1000, 100, 100, 100, 10};
 
+//    private final Map<Integer, Integer> NUMBER_OF_ITERS = new HashMap<Integer, Integer>() {{
+//        put(100, 1000);
+//        put(1000, 100);
+//        put(10000, 100);
+//        put(100000, 100);
+//        put(1000000, 10);
+//    }};
+//
 //    Map<Integer, Double> CLOCKS = new HashMap<Integer, Double>() {{
 //        put(100, 0.0);
 //        put(1000, 0.0);
@@ -28,9 +31,8 @@ public class Main {
         return ThreadLocalRandom.current().doubles(len).toArray();
     }
 
-    public <T> void timeit (Callable<T> func) {
-        int nums = 100;
-        int[] iters = new int[]{ 1000, 100, 100, 100, 10 };
+    public <T extends Callable<T>> void timeit (Callable<T> func) {
+
         for (int i = 0; i < 5; i++) {
             Map<Integer, Double> clocks = new HashMap<Integer, Double>() {{
                 put(100, 0.0);
@@ -39,12 +41,15 @@ public class Main {
                 put(100000, 0.0);
                 put(1000000, 0.0);
             }};
-            for (int j = iters[i]; j > 0; j--) {
-                double[] sample = randArr(nums);
-                final long st = System.currentTimeMillis();
-                Sorts.func(sample);
-                final long
+            int average = 0;
+            for (int j = number_of_iterartions[i]; j > 0; j--) {
+                double[] sample = randArr(number_of_elements[j]);
+                long st = System.currentTimeMillis();
+                Sorts.bubble(sample);
+                final long time = st - System.currentTimeMillis();
+                average += time;
             }
+
         };
     }
 
