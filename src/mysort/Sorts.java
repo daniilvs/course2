@@ -1,8 +1,18 @@
 package mysort;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Random;
+
+import static java.lang.Math.toIntExact;
 
 public class Sorts {
+    private static void swap(double[] arr, int i, int j)
+    {
+        double temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
     public static void bubble(double[] arr) {
         int size = arr.length;
         boolean swapped = false;
@@ -10,9 +20,7 @@ public class Sorts {
             for (int j = 0; j < i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     swapped = true;
-                    double temp = arr[j + 1];
-                    arr[j + 1] = arr[j];
-                    arr[j] = temp;
+                    swap(arr, j+1, j);
                 }
             }
             if (!swapped) {
@@ -34,16 +42,14 @@ public class Sorts {
     }
 
     public static void selection(double[] arr) {
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             int lowest = i;
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[lowest]) {
                     lowest = j;
                 }
             }
-            double temp = arr[lowest];
-            arr[lowest] = arr[i];
-            arr[i] = temp;
+            swap(arr, lowest, i);
         }
     }
 
@@ -52,7 +58,7 @@ public class Sorts {
         if (size > 1) {
             int mid = size / 2;
             double[] left = Arrays.copyOfRange(arr, 0, mid);
-            double[] right = Arrays.copyOfRange(arr, mid, 0);
+            double[] right = Arrays.copyOfRange(arr, mid, arr.length);
             memerge(left);
             memerge(right);
             int i, j, k;
@@ -108,9 +114,7 @@ public class Sorts {
     }
 
     private static void heapify(double[] arr, int start, int length) {
-        int left = 2 * start + 1;
-        int right = left + 1;
-        int max = start;
+        int left = 2 * start + 1, right = left + 1, max = start;
         if (left < length && arr[left] > arr[max]) {
             max = left;
         }
@@ -118,9 +122,7 @@ public class Sorts {
             max = right;
         }
         if (max != start) {
-            double temp = arr[max];
-            arr[max] = arr[start];
-            arr[start] = temp;
+            swap(arr, max, start);
             heapify(arr, max, length);
         }
     }
@@ -134,28 +136,102 @@ public class Sorts {
     public static void heap(double[] arr) {
         buildHeap(arr);
         for (int j = arr.length - 1; j >= 1; j--) {
-            double temp = arr[0];
-            arr[0] = arr[j];
-            arr[j] = temp;
+            swap(arr, 0, j);
             heapify(arr, 0, j);
         }
     }
 
-    public static void quick(double[] arr) {
-        if (arr.length <= 1) {
-            return;
+    private static final Random random = new Random(Calendar.getInstance().getTimeInMillis());
+
+    private static int partition(double[] arr, int min, int max) {
+        double x = arr[max];
+        int left = min, right = max;
+        while (left <= right) {
+            while (arr[left] < x) {
+                left++;
+            }
+            while (arr[right] > x) {
+                right--;
+            }
+            if (left <= right) {
+                swap(arr, left, right);
+                left++;
+                right--;
+            }
         }
-        else {
-            double pivot = arr[arr.length - 1];
-            double[] left, right;
-            left = new double[arr.length];
-            right = new double[arr.length];
-            Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length - 1)).forEach(
-                    (elem) ->  { if (elem < pivot) {
-            left.append(elem);
-                    }
-            });
+        return right;
+    }
+
+    private static void quickSort(double[] arr, int min, int max) {
+        if (min < max) {
+            int border = partition(arr, min, max);
+            quickSort(arr, min, border);
+            quickSort(arr, border + 1, max);
         }
     }
+
+    public static void quick(double[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    public static long getMantissa(double x) {
+        long bits = Double.doubleToLongBits(x);
+        return bits & 0x000fffffffffffffL;
+    }
+
+
+    private static void counting(double[] arr, long exp) {
+        double[] out = new double[arr.length];
+        int[] count = new int[10];
+        for (double v : arr) {
+            long mant = getMantissa(v);
+            int index = toIntExact((mant / exp) % 10);
+            count[index]++;
+        }
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+        for (int i = arr.length - 1; i >= 0; i--) {
+            long mant = getMantissa(arr[i]);
+            int index = toIntExact((mant / exp) % 10);
+            out[count[index] - 1] = arr[i];
+            count[index]--;
+        }
+        System.arraycopy(out, 0, arr, 0, arr.length);
+    }
+
+    private static double getMax(double[] arr)
+    {
+        double max = arr[0];
+        for (int i = 1; i < arr.length; i++)
+            if (arr[i] > max)
+                max = arr[i];
+        return max;
+    }
+
+    public static void radix(double[] arr) {
+        double max = getMax(arr);
+        long mant = getMantissa(max);
+        for (long exp = 1; mant / exp >= 1; exp *= 10) {
+            counting(arr, exp);
+        }
+    }
+
+//    public static void quick(double[] arr) {
+//        if (arr.length <= 1) {
+//            return;
+//        }
+//        else {
+//            double pivot = arr[arr.length - 1];
+//            int i = 0, j = 0;
+//            double[] left = new double[arr.length], right = new double[arr.length];
+//            Arrays.stream(Arrays.copyOfRange(arr, 0, arr.length - 1)).forEach(
+//                    (elem) ->  { if (elem < pivot) {
+//            left[i] = elem;
+//            i++;
+//                    }
+//            });
+//        }
+//    }
 
 }
