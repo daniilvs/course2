@@ -23,29 +23,8 @@ public class Main {
 //        put(1000000, 0.0);
 //    }};
 
-    public static double[] randArr (int len) {
-        return ThreadLocalRandom.current().doubles(len).toArray();
-    }
-
-    public static void main(String[] args) {
-        double[] arr = randArr(10);
-
-        System.out.println("Array Before Sort");
-        Arrays.stream(arr).mapToObj(v -> v + " ").forEach(System.out::print);
-        System.out.println();
-
-        Sorts.radix(arr);
-
-        System.out.println("Array After Sort");
-        Arrays.stream(arr).mapToObj(v -> v + " ").forEach(System.out::print);
-        System.out.println();
-//        double x = arr[0];
-//        long mantis = Sorts.getMantissa(x);
-//        System.out.println(x);
-//        System.out.println(mantis);
 //
-//        System.out.println(Arrays.toString(arr));
-//        List<Long> mantisses = Arrays.stream(arr).mapToObj(Sorts::getMantissa).toList();
-//        System.out.println(mantisses);
+    public static void main(String[] args) {
+        new Benchmark().tester(new Bubble(), new Insertion());
     }
 }

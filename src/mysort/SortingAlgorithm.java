@@ -1,6 +1,6 @@
 package mysort;
 
-abstract class SortingAlgorithm {
+public abstract class SortingAlgorithm {
     public static void swap(double[] arr, int i, int j)
     {
         double temp = arr[i];
