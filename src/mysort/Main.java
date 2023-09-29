@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 public class Main {
 
-    private final int[] number_of_elements = { 100, 1000, 10000, 100000, 1000000 };
-    private final int[] number_of_iterartions = { 1000, 100, 100, 100, 10 };
-
 //    private final Map<Integer, Integer> NUMBER_OF_ITERS = new HashMap<Integer, Integer>() {{
 //        put(100, 1000);
 //        put(1000, 100);
