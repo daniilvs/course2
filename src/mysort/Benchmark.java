@@ -25,11 +25,9 @@ public class Benchmark {
                 average = average / number_of_iterartions[i] * Math.pow(10, -9);
                 clocks.put(number_of_elements[i], average);
             }
-            String headerOutput = String.format("Average times for %s sort are:", alg.getClass().getSimpleName());
-            System.out.println(headerOutput);
+            System.out.printf("Average times for %s sort are:\n", alg.getClass().getSimpleName());
             for (Map.Entry<Integer, Double> entry : clocks.entrySet()) {
-                String timeOutput = String.format("- for %s elements: %.9f ms",entry.getKey().toString(), entry.getValue());
-                System.out.println(timeOutput);
+                System.out.printf("- for %s elements: %.9f ms\n",entry.getKey().toString(), entry.getValue());
             }
         }
     }

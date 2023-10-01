@@ -28,7 +28,6 @@ public class Radix extends SortingAlgorithm{
 
     @Override
     public void sortAsc(double[] arr) {
-
         for (int i = 0; i < 8; i++) {
             counting(arr, i);
         }
