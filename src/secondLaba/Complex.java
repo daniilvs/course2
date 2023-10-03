@@ -6,6 +6,13 @@ public class Complex {
     double real;
     double imag;
 
+    public Complex() {}
+
+    public Complex(double real, double imag) {
+        this.real = real;
+        this.imag = imag;
+    }
+
     @Override
     public String toString() {
         return real + " + " + imag + "i";
@@ -17,12 +24,6 @@ public class Complex {
         if (o == null || getClass() != o.getClass()) return false;
         Complex complex = (Complex) o;
         return Double.compare(real, complex.real) == 0 && Double.compare(imag, complex.imag) == 0;
-    }
-
-    public Complex() {}
-    public Complex(double real, double imag) {
-        this.real = real;
-        this.imag = imag;
     }
 
     public static Complex add(Complex num1, Complex num2) {
@@ -44,7 +45,4 @@ public class Complex {
         double newB = (num1.imag * num2.real - num1.real * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
         return new Complex(newA, newB);
     }
-
-
-
 }
