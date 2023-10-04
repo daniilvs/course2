@@ -26,23 +26,23 @@ public class Complex {
         return Double.compare(real, complex.real) == 0 && Double.compare(imag, complex.imag) == 0;
     }
 
-    public static Complex add(Complex num1, Complex num2) {
-        return new Complex((num1.real + num2.real), (num1.imag + num2.imag));
+    public Complex add(Complex num2) {
+        return new Complex((this.real + num2.real), (this.imag + num2.imag));
     }
 
-    public static Complex subtract(Complex num1, Complex num2) {
-        return new Complex((num1.real - num2.real), (num1.imag - num2.imag));
+    public Complex subtract(Complex num2) {
+        return new Complex((this.real - num2.real), (this.imag - num2.imag));
     }
 
-    public static Complex multiply(Complex num1, Complex num2) {
-        double newA = (num1.real * num2.real - num1.imag * num2.imag);
-        double newB = (num1.real * num2.imag + num1.imag * num2.real);
+    public Complex multiply(Complex num2) {
+        double newA = (this.real * num2.real - this.imag * num2.imag);
+        double newB = (this.real * num2.imag + this.imag * num2.real);
         return new Complex(newA, newB);
     }
 
-    public static Complex divide(Complex num1, Complex num2) {
-        double newA = (num1.real * num2.real + num1.imag * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
-        double newB = (num1.imag * num2.real - num1.real * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
+    public Complex divide(Complex num2) {
+        double newA = (this.real * num2.real + this.imag * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
+        double newB = (this.imag * num2.real - this.real * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
         return new Complex(newA, newB);
     }
 }

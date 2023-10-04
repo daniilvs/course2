@@ -10,10 +10,10 @@ public class Main {
         sample.real = 1.5;
         sample.imag = 0.5;
         System.out.println(sample);
-        System.out.println(Complex.add(first, second));
-        System.out.println(Complex.subtract(first, second));
-        System.out.println(Complex.multiply(first, second));
-        System.out.println(Complex.divide(first, second));
+        System.out.println(first.add(second));
+        System.out.println(first.subtract(second));
+        System.out.println(first.multiply(second));
+        System.out.println(first.divide(second));
         System.out.println(first.equals(second));
         System.out.println(first.equals(firstCopy));
     }
