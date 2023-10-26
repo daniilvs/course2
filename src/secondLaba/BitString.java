@@ -1,5 +1,10 @@
 package secondLaba;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BitString {
 
@@ -59,7 +64,7 @@ public class BitString {
         char[] chars = string.toCharArray();
         for (int i = 0; i < len; i++) {
             if (chars[i] == '1') set(i);
-            }
+        }
 //        if ((len % Long.SIZE) > 0) {
 //            data[len / Long.SIZE] >>>= (Long.SIZE - len);
 //        }
