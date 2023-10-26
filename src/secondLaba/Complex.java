@@ -3,8 +3,8 @@ package secondLaba;
 import static java.lang.Math.pow;
 
 public class Complex {
-    double real;
-    double imag;
+    private double real;
+    private double imag;
 
     public Complex() {}
 

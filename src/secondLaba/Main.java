@@ -7,8 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         Complex sample = new Complex();
-        sample.real = 1.5;
-        sample.imag = 0.5;
         System.out.println(sample);
         System.out.println(first.add(second));
         System.out.println(first.subtract(second));
