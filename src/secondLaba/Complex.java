@@ -1,7 +1,5 @@
 package secondLaba;
 
-import static java.lang.Math.pow;
-
 public class Complex {
     private double real;
     private double imag;
@@ -41,8 +39,8 @@ public class Complex {
     }
 
     public Complex divide(Complex num2) {
-        double newA = (this.real * num2.real + this.imag * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
-        double newB = (this.imag * num2.real - this.real * num2.imag) / (pow(num2.real, 2) + pow(num2.imag, 2));
+        double newA = (this.real * num2.real + this.imag * num2.imag) / ((num2.real * num2.real) + (num2.imag * num2.imag));
+        double newB = (this.imag * num2.real - this.real * num2.imag) / ((num2.real * num2.real) + (num2.imag * num2.imag));
         return new Complex(newA, newB);
     }
 }
