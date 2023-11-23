@@ -4,21 +4,18 @@ package roguelike;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Location {
-    private List<File> descriptions;
-    {
-        File dir = new File("src/roguelike/resources/descriptions");
-        File[] arrFiles = dir.listFiles();
-        assert arrFiles != null;
-        descriptions = Arrays.asList(arrFiles);
-    }
-    File description;
-    ArrayList<Character> enemies = new ArrayList<Character>();
-    String[] loot;
-    int[] doorsTo;
+
+    protected File description;
+    protected HashMap<String, Character> enemies = new HashMap<String, Character>();
+    protected String[] loot;
+    protected int[] doorsTo;
+    protected int exit = 0;
+
 
     public Location(int quantity) {
         this.doorsTo = new int[quantity];
@@ -33,7 +30,14 @@ public class Location {
     public void fillWithEnemies() {
         int i = ThreadLocalRandom.current().nextInt(3);
         for (; i > 0; i--) {
-            this.enemies.add(Character.createEnemy());
+            Character e = Character.createEnemy();
+            enemies.put(e.name, e);
         }
+    }
+    public void addDescription(List<File> lst) {
+        int range = lst.size();
+        int i = ThreadLocalRandom.current().nextInt(range);
+        description = lst.get(i);
+        lst.remove(i);
     }
 }

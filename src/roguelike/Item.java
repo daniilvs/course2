@@ -1,6 +1,6 @@
 package roguelike;
 
-public class Item {
+public abstract class Item {
     protected String name;
     protected int hpBuff;
     protected int dmgBuff;

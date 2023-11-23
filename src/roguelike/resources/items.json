@@ -1,15 +1,7 @@
 [
   {
-    "name": "Свиток возвращения",
-    "hpBuff": 0,
-    "dmgBuff": 0,
-    "rate": 18,
-    "quantity": 1,
-    "back": true,
-    "dice": ""
-  },
-  {
     "name": "Зелье здоровья",
+    "description": "[Восстанавливает d4+2 здоровья]",
     "hpBuff": 2,
     "dmgBuff": 0,
     "rate": 5,
@@ -19,6 +11,7 @@
   },
   {
     "name": "Зелье урона",
+    "description": "[Добавляет d4+2 к урону]",
     "hpBuff": 0,
     "dmgBuff": 2,
     "rate": 5,
@@ -27,34 +20,8 @@
     "dice": "d4"
   },
   {
-    "name": "Меч",
-    "hpBuff": 0,
-    "dmgBuff": 3,
-    "rate": 4,
-    "quantity": 1,
-    "back": false,
-    "dice": ""
-  },
-  {
-    "name": "Золото",
-    "hpBuff": 0,
-    "dmgBuff": 0,
-    "rate": 7,
-    "quantity": 100,
-    "back": false,
-    "dice": ""
-  },
-  {
-    "name": "Щит",
-    "hpBuff": 0,
-    "dmgBuff": 0,
-    "rate": 6,
-    "quantity": 1,
-    "back": false,
-    "dice": ""
-  },
-  {
     "name": "Зачетка Рыжего",
+    "description": "[Вы становитесь практически неуязвимым. +99 к здоровью и урону]",
     "hpBuff": 99,
     "dmgBuff": 99,
     "rate": 20,

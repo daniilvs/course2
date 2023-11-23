@@ -27,4 +27,5 @@ public class Dice {
     static public int d16() {
         return ThreadLocalRandom.current().nextInt(16+1);
     }
+
 }
