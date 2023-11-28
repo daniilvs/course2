@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Maze {
-    private Location[] rooms;
+    protected Location[] rooms;
     private List<File> descriptions;
     {
         File dir = new File("src/roguelike/resources/descriptions");
@@ -15,6 +15,10 @@ public class Maze {
         assert arrFiles != null;
         descriptions = Arrays.asList(arrFiles);
     }
+
+    public Maze() {
+    }
+
     private int start = 0;
     private int portal = 0;
     protected Character mc;

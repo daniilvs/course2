@@ -10,11 +10,19 @@ public class Activities {
         BufferedReader fin = new BufferedReader(new FileReader(room.description));
         String line;
         while ((line = fin.readLine()) != null) System.out.println(line);
-
     }
 
-    static public void lookForDoors(Location room) {
+    static public int[] lookForDoors(Character mc, Location room) {
+        int[] ways = new int[room.doorsTo.length - 1];
+        int index = 0;
+        for (int w : room.doorsTo) {
+            if (w != mc.previousLocation) {
+                ways[index] = w;
+                index++;
+            }
+        }
 
+        return ways;
     }
 
     static public int lookForEnemies(Location room) {

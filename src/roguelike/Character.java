@@ -92,6 +92,7 @@ public class Character {
     static public Character createMainCharacter() {
         Character mc = new Character();
         mc.hp = 10 + Dice.d6() + 1;
+        Dice.valueOf("D4");
         mc.dice = "d6";
         return mc;
     }
@@ -148,6 +149,10 @@ public class Character {
 
     public boolean isDead() {
         return hp < 1;
+    }
+
+    public void twentySeven() {
+        hp = 0;
     }
 
     public static void main(String[] args) {
