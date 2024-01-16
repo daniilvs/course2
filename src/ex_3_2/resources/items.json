@@ -7,7 +7,7 @@
     "rate": 5,
     "quantity": 1,
     "back": false,
-    "dice": "d4"
+    "dice": "D4"
   },
   {
     "name": "Зелье урона",
@@ -17,7 +17,7 @@
     "rate": 5,
     "quantity": 1,
     "back": false,
-    "dice": "d4"
+    "dice": "D4"
   },
   {
     "name": "Зачетка Рыжего",
