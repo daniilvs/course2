@@ -23,8 +23,8 @@ public class Character implements Actables{
 
     static {
         try {
-            frEnemies = new FileReader("src/roguelike/resources/enemiesList.json");
-            frItems = new FileReader("src/roguelike/resources/items.json");
+            frEnemies = new FileReader("src/ex_3_2/resources/enemiesList.json");
+            frItems = new FileReader("src/ex_3_2/resources/items.json");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

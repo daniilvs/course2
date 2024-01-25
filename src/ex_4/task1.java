@@ -1,2 +1,4 @@
-package ex_4;public class task1 {
+package ex_4;
+
+public class task1 {
 }

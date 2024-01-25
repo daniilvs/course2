@@ -10,7 +10,7 @@ public class Maze {
     protected Location[] rooms;
     private List<File> descriptions;
     {
-        File dir = new File("src/roguelike/resources/descriptions");
+        File dir = new File("src/ex_3_2/resources/descriptions");
         File[] arrFiles = dir.listFiles();
         assert arrFiles != null;
         descriptions = Arrays.asList(arrFiles);
