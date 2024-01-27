@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Зелье здоровья",
+    "description": "[Восстанавливает d4+2 здоровья]",
+    "hpBuff": 2,
+    "dmgBuff": 0,
+    "rate": 5,
+    "quantity": 1,
+    "back": false,
+    "dice": "D4"
+  },
+  {
+    "name": "Зелье урона",
+    "description": "[Добавляет d4+2 к урону]",
+    "hpBuff": 0,
+    "dmgBuff": 2,
+    "rate": 5,
+    "quantity": 1,
+    "back": false,
+    "dice": "D4"
+  },
+  {
+    "name": "Зачетка Рыжего",
+    "description": "[Вы становитесь практически неуязвимым. +99 к здоровью и урону]",
+    "hpBuff": 99,
+    "dmgBuff": 99,
+    "rate": 20,
+    "quantity": 1,
+    "back": false,
+    "dice": ""
+  }
+]

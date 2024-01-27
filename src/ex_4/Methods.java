@@ -107,7 +107,7 @@ public class Methods {
     }
 
     // counting chars
-    public static void countCharsUsage(String input, String output) throws IOException {
+    public static void countLength(String input, String output) throws IOException {
         List<String> words = getWordsSorted(input);
         HashMap<Integer, Integer> mapa = new HashMap<>();
         List<String> res = new ArrayList<>();
@@ -136,15 +136,9 @@ public class Methods {
         Files.write(Path.of(output), format("Number of characters: %d", quantity).getBytes());
     }
 
-    private static LinkedHashMap<Character, Integer> countCharsMap(String input) throws FileNotFoundException {
-        String theString = "";
-        File file = new File(input);
-        Scanner scanner = new Scanner(file);
-        theString = scanner.nextLine();
-        while (scanner.hasNextLine()) {
-            theString = theString + "\n" + scanner.nextLine();
-        }
-        char[] charArray = theString.toCharArray();
+    private static LinkedHashMap<Character, Integer> countCharsMap(String input) throws IOException {
+        List<String> words = getWords(input);
+        char[] charArray = new char[0];
         Arrays.sort(charArray);
         LinkedHashMap<Character, Integer> mapa = new LinkedHashMap<>();
         for (char c : charArray) {
@@ -197,7 +191,7 @@ public class Methods {
 //        countWordsB("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_count_b.txt");
 //        countWordsC("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_count_c.txt");
 //        countWordsD("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_count_d.txt");
-//        countCharsUsage("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_countCharsUsage.txt");
+//        countLength("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_countLength.txt");
 //        countAllChars("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_countAllChars.txt");
         characterUsageA("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_characterUsageA.txt");
         characterUsageB("src/ex_4/resources/lenin.txt", "src/ex_4/out/out_characterUsageB.txt");

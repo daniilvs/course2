@@ -27,7 +27,7 @@ public class Benchmark {
             }
             System.out.printf("Average times for %s sort are:\n", alg.getClass().getSimpleName());
             for (Map.Entry<Integer, Double> entry : clocks.entrySet()) {
-                System.out.printf("- for %s elements: %.9f ms\n",entry.getKey().toString(), entry.getValue());
+                System.out.printf("- for %s elements: %.9f s\n",entry.getKey().toString(), entry.getValue());
             }
         }
     }
